@@ -19,6 +19,7 @@
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;li&gt;创建完成后上传 &lt;code&gt;html.index&lt;/code&gt; 文件作为自己站点的主页&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;html.index&lt;/code&gt; 同级上传一个名为 &lt;code&gt;.nojekyll&lt;/code&gt; 的空文件(禁用 jekyll，否则只有 .html 尾缀的文件会进行部署可被访问)&lt;/li&gt;
 &lt;li&gt;对该仓库点击 &lt;code&gt;setting&lt;/code&gt; → &lt;code&gt;General&lt;/code&gt; → &lt;code&gt;Pages&lt;/code&gt;
 &lt;ul&gt;
 &lt;li&gt;进行简单配置，开启该功能&lt;/li&gt;
