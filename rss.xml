@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>我的小宅子</title><description>Blog</description><link>https://www.xavierwang.cn/</link><language>zh_CN</language><item><title>快速入门静态网站搭建</title><link>https://www.xavierwang.cn/posts/%E5%89%8D%E7%AB%AF/%E5%BF%AB%E9%80%9F%E5%85%A5%E9%97%A8%E9%9D%99%E6%80%81%E7%BD%91%E7%AB%99%E6%90%AD%E5%BB%BA/</link><guid isPermaLink="true">https://www.xavierwang.cn/posts/%E5%89%8D%E7%AB%AF/%E5%BF%AB%E9%80%9F%E5%85%A5%E9%97%A8%E9%9D%99%E6%80%81%E7%BD%91%E7%AB%99%E6%90%AD%E5%BB%BA/</guid><description>使用 fuwari，只要你会写 markdown 就能快速搭建一个静态博客站</description><pubDate>Sun, 17 May 2026 00:00:00 GMT</pubDate><content:encoded>&lt;h1&gt;技术方案简介&lt;/h1&gt;
+&lt;p&gt;&lt;code&gt;fuwari&lt;/code&gt; 是一个基于 &lt;code&gt;astro&lt;/code&gt; 开发的前端项目。相较于 &lt;code&gt;worldpress&lt;/code&gt; 等方案，&lt;code&gt;astro&lt;/code&gt; 提供了更加自由的扩展能力。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;fuwari&lt;/code&gt; 根据 &lt;code&gt;markdown&lt;/code&gt; 文件生成静态页面&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;GitHub pages&lt;/code&gt; 提供静态页展示&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;DNS 服务(本文为腾讯云)&lt;/code&gt; 提供 DNS 解析&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1&gt;GitHub Page&lt;/h1&gt;
+&lt;p&gt;&lt;a href=&quot;https://docs.github.com/en/pages/quickstart&quot;&gt;GitHub Page 参考文档&lt;/a&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;讲人话：这是一个免费的服务，可以部署静态 html 页面&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2&gt;使用方法&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;创建好 &lt;code&gt;GitHub&lt;/code&gt; 账号&lt;/li&gt;
+&lt;li&gt;在自己的账号中创建一个叫做 &lt;code&gt;{自己账号名称}.github.io&lt;/code&gt; 的仓库(名称规则是强制要求)
+&lt;ul&gt;
+&lt;li&gt;可见性为 &lt;code&gt;public&lt;/code&gt; 才免费，否则需要付费&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;创建完成后上传 &lt;code&gt;html.index&lt;/code&gt; 文件作为自己站点的主页&lt;/li&gt;
+&lt;li&gt;对该仓库点击 &lt;code&gt;setting&lt;/code&gt; → &lt;code&gt;General&lt;/code&gt; → &lt;code&gt;Pages&lt;/code&gt;
+&lt;ul&gt;
+&lt;li&gt;进行简单配置，开启该功能&lt;/li&gt;
+&lt;li&gt;自动绑定上默认的 &lt;code&gt;action&lt;/code&gt;，是对 &lt;code&gt;main&lt;/code&gt; 分支进行构建，每次你提交了新页面到 &lt;code&gt;main&lt;/code&gt; 分支就会自动更新站点数据&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;此时，访问浏览器访问 &lt;code&gt;{自己账号名称}.github.io&lt;/code&gt; 就是访问到个人站点的主页即上文提到的 &lt;code&gt;html.index&lt;/code&gt;&lt;/p&gt;
+&lt;h1&gt;DNS 服务配置&lt;/h1&gt;
+&lt;p&gt;如果你想把 GitHub Page 的站点绑定到自己的个人域名，那么需要配置 DNS 解析服务。&lt;/p&gt;
+&lt;p&gt;国内合规要求，域名配置 DNS 解析必须先备案。&lt;/p&gt;
+&lt;h2&gt;配置方法&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;GitHub Page 对应仓库点击 &lt;code&gt;setting&lt;/code&gt; → &lt;code&gt;General&lt;/code&gt; → &lt;code&gt;Pages&lt;/code&gt; → &lt;code&gt;Custom domain&lt;/code&gt;
+&lt;ul&gt;
+&lt;li&gt;配置为自己的域名例如 &lt;code&gt;www.myside.cn&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;[x] Enforce HTTPS&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;DNS 解析服务中添加两条记录&lt;/li&gt;
+&lt;/ul&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;主机记录&lt;/th&gt;
+&lt;th&gt;记录类型&lt;/th&gt;
+&lt;th&gt;记录值&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;www&lt;/td&gt;
+&lt;td&gt;CNAME&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;{自己账号名称}.github.io&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;@&lt;/td&gt;
+&lt;td&gt;CNAME&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;{自己账号名称}.github.io&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;解析生效后，浏览器访问 &lt;code&gt;www.myside.cn&lt;/code&gt; 和 &lt;code&gt;{自己账号名称}.github.io&lt;/code&gt; 就等效了&lt;/p&gt;
+&lt;h1&gt;fuwari&lt;/h1&gt;
+&lt;blockquote&gt;
+&lt;p&gt;讲人话：把你写的有一定规范的 &lt;code&gt;markdown&lt;/code&gt; 文件自动生成静态页面站点的项目&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2&gt;使用方法&lt;/h2&gt;
+&lt;p&gt;&lt;a href=&quot;https://github.com/saicaca/fuwari&quot;&gt;fuwari 参考资料&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;按教程进行安装运行即可&lt;/p&gt;
+&lt;p&gt;之后在 &lt;code&gt;config.ts&lt;/code&gt; 进行简单的修改，即可修改站点名称，背景图，简介等。&lt;/p&gt;
+&lt;p&gt;随后在 &lt;code&gt;src/content/posts&lt;/code&gt; 下添加自己的 &lt;code&gt;markdown&lt;/code&gt; 文章即可，每篇文章必须添加这段内容，用于生成文章跳转链接分类等。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;---
+title: My First Blog Post
+published: 2023-09-09
+description: This is the first post of my new Astro blog.
+image: ./cover.jpg
+tags: [ Foo, Bar ]
+category: Front-end
+draft: false
+lang: jp      # 仅当文章语言与 `config.ts` 中的网站语言不同时需要设置
+---
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;每次完成文档编写后，运行 &lt;code&gt;package.json&lt;/code&gt; 中的 &lt;code&gt;build&lt;/code&gt; 脚本，随后把 &lt;code&gt;dist&lt;/code&gt; 目录下的文件上传到 GitHub Page 对应仓库的主分支即可&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;画外音：&lt;/strong&gt; 可以在 GitHub Page 中配置自动化，即 &lt;code&gt;action&lt;/code&gt;，效果可以打到提交完
+&lt;code&gt;markdown&lt;/code&gt; 就自动更新页面，参见 &lt;a href=&quot;https://astro.build/&quot;&gt;astro 官方文档&lt;/a&gt;&lt;/p&gt;
+</content:encoded></item></channel></rss>
